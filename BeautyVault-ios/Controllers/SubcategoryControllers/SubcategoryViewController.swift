@@ -113,6 +113,7 @@ class SubcategoryViewController: UIViewController {
         super.viewDidLoad()
         self.view.backgroundColor = .white
 
+        self.navigationController?.navigationBar.tintColor = .systemIndigo
         navigationItem.rightBarButtonItem = addSubcategoryButton
         navigationItem.backButtonTitle = ""
 
@@ -125,7 +126,28 @@ class SubcategoryViewController: UIViewController {
     }
 
     @objc private func addSubcategory() {
-        print("Im tapped")
+        let vc = AddSubcategorySheetViewController()
+        
+        let navController = UINavigationController(rootViewController: vc)
+        
+        if let sheet = navController.sheetPresentationController {
+            sheet.detents = [.custom { _ in
+                let screenHeight = UIScreen.main.bounds.height
+                return screenHeight * 0.3
+            }]
+        }
+
+        let closeButton = UIBarButtonItem(title: "Close", style: .done, target: self, action: #selector(dismissAddSubcategorySheet))
+
+        closeButton.tintColor = .systemIndigo
+        
+        vc.navigationItem.rightBarButtonItem = closeButton
+
+        present(navController, animated: true, completion: nil)
+    }
+
+    @objc private func dismissAddSubcategorySheet() {
+        dismiss(animated: true, completion: nil)
     }
 
     private func configureTableView() {

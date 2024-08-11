@@ -13,6 +13,8 @@ class TabBarViewController: UITabBarController {
         self.navigationItem.hidesBackButton = true
         view.backgroundColor = .white
 
+        self.tabBar.tintColor = .systemIndigo;
+
         delegate = self
 
         configureTabBar()

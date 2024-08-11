@@ -32,6 +32,7 @@
 		726A25762C661D500002E858 /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = 726A25752C661D500002E858 /* Product.swift */; };
 		72C2BBC02C677AAF00D9F53E /* RightBarButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72C2BBBF2C677AAF00D9F53E /* RightBarButton.swift */; };
 		72C2BBC62C67835A00D9F53E /* WishlistViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72C2BBC52C67835A00D9F53E /* WishlistViewController.swift */; };
+		72E633052C68D00900C47D6D /* AddSubcategorySheetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72E633042C68D00900C47D6D /* AddSubcategorySheetViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -61,6 +62,7 @@
 		726A25752C661D500002E858 /* Product.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Product.swift; sourceTree = "<group>"; };
 		72C2BBBF2C677AAF00D9F53E /* RightBarButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RightBarButton.swift; sourceTree = "<group>"; };
 		72C2BBC52C67835A00D9F53E /* WishlistViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WishlistViewController.swift; sourceTree = "<group>"; };
+		72E633042C68D00900C47D6D /* AddSubcategorySheetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddSubcategorySheetViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -172,6 +174,7 @@
 			isa = PBXGroup;
 			children = (
 				721F02DC2C64F55200A98803 /* SubcategoryViewController.swift */,
+				72E633042C68D00900C47D6D /* AddSubcategorySheetViewController.swift */,
 			);
 			path = SubcategoryControllers;
 			sourceTree = "<group>";
@@ -305,6 +308,7 @@
 				721F02DF2C64F55200A98803 /* LoginViewController.swift in Sources */,
 				721F02E22C64F55200A98803 /* CategoriesCollectionViewCell.swift in Sources */,
 				72C2BBC02C677AAF00D9F53E /* RightBarButton.swift in Sources */,
+				72E633052C68D00900C47D6D /* AddSubcategorySheetViewController.swift in Sources */,
 				721F02EE2C64F56700A98803 /* EmailTextField.swift in Sources */,
 				721F02E72C64F55200A98803 /* SubcategoryViewController.swift in Sources */,
 				721F02F62C64F57D00A98803 /* SignupUserRequest.swift in Sources */,
