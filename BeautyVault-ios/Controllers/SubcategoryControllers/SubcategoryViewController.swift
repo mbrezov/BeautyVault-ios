@@ -63,28 +63,24 @@ class SubcategoryViewController: UIViewController {
     }
 
     private func handleEditAction(at indexPath: IndexPath) {
-        let alertController = UIAlertController(
-            title: "Edit Subcategory Name",
-            message: "Please enter a new name for this subcategory.",
-            preferredStyle: .alert
-        )
-
-        alertController.addTextField { textField in
-            textField.placeholder = "Name"
+        let vc = EditSubcategorySheetViewController()
+        
+        let navController = UINavigationController(rootViewController: vc)
+        
+        if let sheet = navController.sheetPresentationController {
+            sheet.detents = [.custom { _ in
+                let screenHeight = UIScreen.main.bounds.height
+                return screenHeight * 0.3
+            }]
         }
 
-        let submitAction = UIAlertAction(title: "Submit", style: .default) { _ in
-            if let text = alertController.textFields?.first?.text, !text.isEmpty {
-                print(text)
-            }
-        }
+        let closeButton = UIBarButtonItem(title: "Close", style: .done, target: self, action: #selector(dismissAddSubcategorySheet))
 
-        let cancelAction = UIAlertAction(title: "Cancel", style: .destructive)
+        closeButton.tintColor = .systemIndigo
+        
+        vc.navigationItem.rightBarButtonItem = closeButton
 
-        alertController.addAction(submitAction)
-        alertController.addAction(cancelAction)
-
-        present(alertController, animated: true, completion: nil)
+        present(navController, animated: true, completion: nil)
     }
 
     private let cellRegistration = UICollectionView.CellRegistration<UICollectionViewListCell, String> { cell, indexPath, item in

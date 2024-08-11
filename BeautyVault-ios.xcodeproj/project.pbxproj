@@ -30,6 +30,7 @@
 		7266FC402C6513BF005C6BDD /* ProductsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7266FC3F2C6513BF005C6BDD /* ProductsViewController.swift */; };
 		726A25732C65F07D0002E858 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 726A25722C65F07D0002E858 /* Kingfisher */; };
 		726A25762C661D500002E858 /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = 726A25752C661D500002E858 /* Product.swift */; };
+		72B7D8582C6902FE00E9F938 /* EditSubcategorySheetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72B7D8572C6902FE00E9F938 /* EditSubcategorySheetViewController.swift */; };
 		72C2BBC02C677AAF00D9F53E /* RightBarButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72C2BBBF2C677AAF00D9F53E /* RightBarButton.swift */; };
 		72C2BBC62C67835A00D9F53E /* WishlistViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72C2BBC52C67835A00D9F53E /* WishlistViewController.swift */; };
 		72E633052C68D00900C47D6D /* AddSubcategorySheetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72E633042C68D00900C47D6D /* AddSubcategorySheetViewController.swift */; };
@@ -60,6 +61,7 @@
 		7266FC3C2C650D5C005C6BDD /* ProductViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductViewController.swift; sourceTree = "<group>"; };
 		7266FC3F2C6513BF005C6BDD /* ProductsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductsViewController.swift; sourceTree = "<group>"; };
 		726A25752C661D500002E858 /* Product.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Product.swift; sourceTree = "<group>"; };
+		72B7D8572C6902FE00E9F938 /* EditSubcategorySheetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditSubcategorySheetViewController.swift; sourceTree = "<group>"; };
 		72C2BBBF2C677AAF00D9F53E /* RightBarButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RightBarButton.swift; sourceTree = "<group>"; };
 		72C2BBC52C67835A00D9F53E /* WishlistViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WishlistViewController.swift; sourceTree = "<group>"; };
 		72E633042C68D00900C47D6D /* AddSubcategorySheetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddSubcategorySheetViewController.swift; sourceTree = "<group>"; };
@@ -175,6 +177,7 @@
 			children = (
 				721F02DC2C64F55200A98803 /* SubcategoryViewController.swift */,
 				72E633042C68D00900C47D6D /* AddSubcategorySheetViewController.swift */,
+				72B7D8572C6902FE00E9F938 /* EditSubcategorySheetViewController.swift */,
 			);
 			path = SubcategoryControllers;
 			sourceTree = "<group>";
@@ -329,6 +332,7 @@
 				7266FC3D2C650D5C005C6BDD /* ProductViewController.swift in Sources */,
 				721F02ED2C64F56700A98803 /* ActionButton.swift in Sources */,
 				72C2BBC62C67835A00D9F53E /* WishlistViewController.swift in Sources */,
+				72B7D8582C6902FE00E9F938 /* EditSubcategorySheetViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
