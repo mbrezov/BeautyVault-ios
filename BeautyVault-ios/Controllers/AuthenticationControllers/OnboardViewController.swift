@@ -18,10 +18,10 @@ class OnboardViewController: UIViewController {
         configureButtons()
     }
     
-    func configureButtons() {
+    private func configureButtons() {
         view.addSubview(signupButton)
         view.addSubview(loginButton)
-        
+
         NSLayoutConstraint.activate([
             loginButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             loginButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -20),
@@ -34,13 +34,13 @@ class OnboardViewController: UIViewController {
             signupButton.heightAnchor.constraint(equalToConstant: 50),
         ])
     }
-    
-    @objc func signupHandler() {
+
+    @objc private func signupHandler() {
         let vc = SignupViewController()
         navigationController?.pushViewController(vc, animated: true)
     }
     
-    @objc func loginHandler() {
+    @objc private func loginHandler() {
         let vc = LoginViewController()
         navigationController?.pushViewController(vc, animated: true)
     }

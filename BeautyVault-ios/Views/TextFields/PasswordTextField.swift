@@ -31,7 +31,7 @@ class PasswordTextField: UITextField {
         adjustsFontSizeToFitWidth = true
         minimumFontSize = 12
         autocorrectionType = .no
-        isSecureTextEntry = true
+//        isSecureTextEntry = true
         leftView = UIView(frame: CGRect(x: 0, y: 0, width: 10, height: self.frame.height))
         leftViewMode = .always
     }

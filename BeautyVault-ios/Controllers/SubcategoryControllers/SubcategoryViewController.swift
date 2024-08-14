@@ -8,7 +8,9 @@
 import UIKit
 
 class SubcategoryViewController: UIViewController {
-    private let placeholder: [String] = ["Testsubcategory1Testsubcategory1Testsubcategory1", "Testsubcategory2", "Testsubcategory3", "Testsubcategory1", "Testsubcategory1", "Testsubcategory1", "Testsubcategory1", "Testsubcategory1Testsubcategory1Testsubcategory1Testsubcategory1"]
+    private let placeholder: [String] = ["Semi-Permanent Hair Colors", "Advanced Nourishing and Repairing Hair Masks for Dry and Damaged Hair", "Hair Lighteners", "Heat Protectants", "Hair Sprays", "Leave-In Conditioners", "Hair Gels", "Professional Salon-Quality Volumizing and Texturizing Styling Mousse for Fine Hair"]
+
+    let category: String
 
     private lazy var addSubcategoryButton: RightBarButton = {
         let image = UIImage(systemName: "plus.square.on.square")
@@ -27,27 +29,29 @@ class SubcategoryViewController: UIViewController {
              }
             deleteAction.backgroundColor = .clear
 
-             let editAction = UIContextualAction(style: .normal, title: "Edit") { [weak self] (action, view, completionHandler) in
+            let editAction = UIContextualAction(style: .normal, title: "Edit") { [weak self] (action, view, completionHandler) in
                  self?.handleEditAction(at: indexPath)
                  completionHandler(true)
              }
 
-             let configuration = UISwipeActionsConfiguration(actions: [deleteAction, editAction])
-             configuration.performsFirstActionWithFullSwipe = false
-             return configuration
+            let configuration = UISwipeActionsConfiguration(actions: [deleteAction, editAction])
+            configuration.performsFirstActionWithFullSwipe = false
+            return configuration
         }
+
         let listLayout = UICollectionViewCompositionalLayout.list(using: layoutConfig)
         let collectionView = UICollectionView(frame: view.bounds, collectionViewLayout: listLayout)
         collectionView.translatesAutoresizingMaskIntoConstraints = false
+
         return collectionView
     }()
-    
+
     private func handleDeleteAction(at indexPath: IndexPath) {
         let alertController = UIAlertController(
             title: "Confirmation",
             message: "This action will permanently delete the selected subcategory. All products within this subcategory will also be removed.",
             preferredStyle: .actionSheet)
-        
+
         let yesAction = UIAlertAction(title: "Confrim", style: .default) { _ in
             print("Delete item at \(indexPath)")
         }
@@ -64,9 +68,9 @@ class SubcategoryViewController: UIViewController {
 
     private func handleEditAction(at indexPath: IndexPath) {
         let vc = EditSubcategorySheetViewController()
-        
+
         let navController = UINavigationController(rootViewController: vc)
-        
+
         if let sheet = navController.sheetPresentationController {
             sheet.detents = [.custom { _ in
                 let screenHeight = UIScreen.main.bounds.height
@@ -77,7 +81,7 @@ class SubcategoryViewController: UIViewController {
         let closeButton = UIBarButtonItem(title: "Close", style: .done, target: self, action: #selector(dismissAddSubcategorySheet))
 
         closeButton.tintColor = .systemIndigo
-        
+
         vc.navigationItem.rightBarButtonItem = closeButton
 
         present(navController, animated: true, completion: nil)
@@ -92,8 +96,6 @@ class SubcategoryViewController: UIViewController {
         cell.backgroundConfiguration?.backgroundColor = UIColor(red: 0.85, green: 0.87, blue: 1, alpha: 0.5)
         cell.contentConfiguration = contentConfiguration
     }
-
-    var category: String
 
     init(category: String) {
         self.category = category
@@ -114,18 +116,18 @@ class SubcategoryViewController: UIViewController {
         navigationItem.backButtonTitle = ""
 
         title = category
-        
+
         collectionView.dataSource = self
         collectionView.delegate = self
-        
+
         configureTableView()
     }
 
     @objc private func addSubcategory() {
         let vc = AddSubcategorySheetViewController()
-        
+
         let navController = UINavigationController(rootViewController: vc)
-        
+
         if let sheet = navController.sheetPresentationController {
             sheet.detents = [.custom { _ in
                 let screenHeight = UIScreen.main.bounds.height
@@ -136,7 +138,7 @@ class SubcategoryViewController: UIViewController {
         let closeButton = UIBarButtonItem(title: "Close", style: .done, target: self, action: #selector(dismissAddSubcategorySheet))
 
         closeButton.tintColor = .systemIndigo
-        
+
         vc.navigationItem.rightBarButtonItem = closeButton
 
         present(navController, animated: true, completion: nil)

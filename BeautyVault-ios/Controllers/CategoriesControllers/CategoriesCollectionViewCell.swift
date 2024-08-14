@@ -8,18 +8,16 @@
 import UIKit
 
 class CategoriesCollectionViewCell: UICollectionViewCell {
-    private lazy var newsTitleLabel: UILabel = {
-        let newsTitleLabel = UILabel()
-        newsTitleLabel.translatesAutoresizingMaskIntoConstraints = false
-        newsTitleLabel.numberOfLines = 2
-        newsTitleLabel.textColor = .systemIndigo
-        newsTitleLabel.font = UIFont.boldSystemFont(ofSize: 16)
-        newsTitleLabel.adjustsFontForContentSizeCategory = true
-        newsTitleLabel.layer.cornerRadius = 5
-        newsTitleLabel.clipsToBounds = true
-        return newsTitleLabel
+    private lazy var categoryTitleLabel: UILabel = {
+        let categoryTitleLabel = UILabel()
+        categoryTitleLabel.textColor = .systemIndigo
+        categoryTitleLabel.font = UIFont.boldSystemFont(ofSize: 16)
+        categoryTitleLabel.adjustsFontForContentSizeCategory = true
+        categoryTitleLabel.layer.cornerRadius = 5
+        categoryTitleLabel.translatesAutoresizingMaskIntoConstraints = false
+        return categoryTitleLabel
     }()
-    
+
     override init(frame: CGRect) {
         super.init(frame: frame)
         self.backgroundColor = UIColor(red: 0.85, green: 0.87, blue: 1, alpha: 0.5)
@@ -27,21 +25,21 @@ class CategoriesCollectionViewCell: UICollectionViewCell {
 
         configureTitleLabel()
     }
-    
+
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 
     func set(category: String) {
-        newsTitleLabel.text = category
+        categoryTitleLabel.text = category
     }
 
     private func configureTitleLabel() {
-        contentView.addSubview(newsTitleLabel)
+        contentView.addSubview(categoryTitleLabel)
 
         NSLayoutConstraint.activate([
-            newsTitleLabel.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
-            newsTitleLabel.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
+            categoryTitleLabel.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
+            categoryTitleLabel.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
         ])
     }
 }

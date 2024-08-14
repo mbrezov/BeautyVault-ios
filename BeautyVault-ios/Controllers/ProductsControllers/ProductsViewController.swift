@@ -9,9 +9,8 @@ import UIKit
 import Kingfisher
 
 class ProductsViewController: UIViewController {
-//    private let placeholder: [String] = ["Skincare", "Hair", "Eyes", "Face", "Lips", "Body", "Makeup", "Perfume"]
     var placeholder: [Product] = [Product.shared, Product.shared, Product.shared, Product.shared]
-    var subcategory: String
+    let subcategory: String
 
     private lazy var addProductButton: RightBarButton = {
         let image = UIImage(systemName: "plus.square.on.square")
@@ -20,15 +19,7 @@ class ProductsViewController: UIViewController {
         }
     }()
 
-    private lazy var titleLabel: UILabel = {
-        let titleLabel = UILabel()
-        titleLabel.text = subcategory
-        titleLabel.font = UIFont.systemFont(ofSize: 24, weight: .bold)
-        titleLabel.lineBreakMode = .byWordWrapping
-        titleLabel.numberOfLines = 0
-        titleLabel.translatesAutoresizingMaskIntoConstraints = false
-        return titleLabel
-    }()
+    private lazy var titleLabel = MainTitleLabel(text: subcategory)
 
     private lazy var collectionView: UICollectionView = {
         var layoutConfig = UICollectionLayoutListConfiguration(appearance: .insetGrouped)
@@ -45,13 +36,13 @@ class ProductsViewController: UIViewController {
         contentConfiguration.text = item.productName
         contentConfiguration.textProperties.font = UIFont.systemFont(ofSize: 18, weight: .bold)
         contentConfiguration.textProperties.color = .systemIndigo
-        
+
         cell.backgroundConfiguration = UIBackgroundConfiguration.listPlainCell()
         cell.backgroundConfiguration?.backgroundColor = UIColor(red: 0.85, green: 0.87, blue: 1, alpha: 0.5)
 
         cell.contentConfiguration = contentConfiguration
     }
-    
+
     init(subcategory: String) {
         self.subcategory = subcategory
 
@@ -75,12 +66,9 @@ class ProductsViewController: UIViewController {
         configureTableView()
     }
 
-    @objc private func addProduct() {
-        print("Im tapped")
-    }
-
     private func configureTableView() {
         view.addSubview(titleLabel)
+        view.addSubview(collectionView)
 
         NSLayoutConstraint.activate([
             titleLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
@@ -88,14 +76,37 @@ class ProductsViewController: UIViewController {
             titleLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16),
         ])
 
-        view.addSubview(collectionView)
-
         NSLayoutConstraint.activate([
             collectionView.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 20),
             collectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: 0),
             collectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 0),
             collectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 0),
         ])
+    }
+
+    @objc private func addProduct() {
+        let vc = AddProductSheetViewController()
+
+        let navController = UINavigationController(rootViewController: vc)
+
+        if let sheet = navController.sheetPresentationController {
+            sheet.detents = [.custom { _ in
+                let screenHeight = UIScreen.main.bounds.height
+                return screenHeight * 0.4
+            }]
+        }
+
+        let closeButton = UIBarButtonItem(title: "Close", style: .done, target: self, action: #selector(dismissAddProductSheet))
+
+        closeButton.tintColor = .systemIndigo
+
+        vc.navigationItem.rightBarButtonItem = closeButton
+
+        present(navController, animated: true, completion: nil)
+    }
+
+    @objc private func dismissAddProductSheet() {
+        dismiss(animated: true, completion: nil)
     }
 }
 
@@ -114,7 +125,7 @@ extension ProductsViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let selectedProduct = placeholder[indexPath.row]
         let productViewController = ProductViewController(product: selectedProduct)
-        
+
         navigationController?.pushViewController(productViewController, animated: true)
     }
 }

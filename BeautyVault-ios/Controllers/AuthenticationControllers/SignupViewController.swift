@@ -11,9 +11,13 @@ import UIKit
 
 class SignupViewController: UIViewController {
     private lazy var emailTextField = EmailTextField()
+
     private lazy var passwordTextField = PasswordTextField(placeholder: "Password")
+
     private lazy var confirmPasswordTextField = PasswordTextField(placeholder: "Confirm password")
+
     private lazy var confirmButton = ActionButton(backgroundColor: UIColor(red: 0.8, green: 0.82, blue: 0.89, alpha: 1.0), title: "Confirm Sign Up", action: confirmSignup)
+
     private lazy var loginLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -22,6 +26,7 @@ class SignupViewController: UIViewController {
         label.textAlignment = .center
         return label
     }()
+
     private lazy var errorLabel: UILabel = {
         let label = UILabel()
         label.isHidden = true
@@ -30,8 +35,8 @@ class SignupViewController: UIViewController {
         label.textAlignment = .center
         return label
     }()
+
     private lazy var loginButton = ActionButton(backgroundColor: .systemIndigo, title: "Login", action: loginHandler)
-    
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -50,7 +55,7 @@ class SignupViewController: UIViewController {
         configureLoginButton()
     }
     
-    @objc func confirmSignup() {
+    @objc private func confirmSignup() {
         let userRequest = SignupUserRequest(
             email: self.emailTextField.text ?? "",
             password: self.passwordTextField.text ?? "",
@@ -94,12 +99,12 @@ class SignupViewController: UIViewController {
         }
     }
 
-    @objc func loginHandler() {
+    @objc private func loginHandler() {
         let vc = LoginViewController()
         navigationController?.pushViewController(vc, animated: true)
     }
 
-    func configureTextFields() {
+    private func configureTextFields() {
         view.addSubview(emailTextField)
         view.addSubview(passwordTextField)
         view.addSubview(confirmPasswordTextField)
@@ -126,7 +131,7 @@ class SignupViewController: UIViewController {
         ])
     }
     
-    func configureErrorLabel() {
+    private func configureErrorLabel() {
         view.addSubview(errorLabel)
         
         NSLayoutConstraint.activate([
@@ -137,7 +142,7 @@ class SignupViewController: UIViewController {
         ])
     }
     
-    func configureConfirmButton() {
+    private func configureConfirmButton() {
         view.addSubview(confirmButton)
         
         NSLayoutConstraint.activate([
@@ -148,7 +153,7 @@ class SignupViewController: UIViewController {
         ])
     }
     
-    func configureLoginLabel() {
+    private func configureLoginLabel() {
         view.addSubview(loginLabel)
         
         NSLayoutConstraint.activate([
@@ -159,7 +164,7 @@ class SignupViewController: UIViewController {
         ])
     }
     
-    func configureLoginButton() {
+    private func configureLoginButton() {
         view.addSubview(loginButton)
         
         NSLayoutConstraint.activate([

@@ -8,25 +8,9 @@
 import UIKit
 
 class EditSubcategorySheetViewController: UIViewController, UITextFieldDelegate {
-    private lazy var submitButton = ActionButton(backgroundColor: UIColor(red: 0.85, green: 0.87, blue: 1, alpha: 1), title: "Submit", action: submitHandler)
+    private lazy var titleLabel = SecondaryTitleLabel(text: "Edit Subcategory")
 
-    private lazy var titleLabel: UILabel = {
-        let titleLabel = UILabel()
-        titleLabel.text = "Edit Subcategory"
-        titleLabel.font = UIFont.boldSystemFont(ofSize: 18)
-        titleLabel.translatesAutoresizingMaskIntoConstraints = false
-        return titleLabel
-    }()
-
-    private lazy var descriptionLabel: UILabel = {
-        let descriptionLabel = UILabel()
-        descriptionLabel.text = "Please enter a new name for the selected subcategory."
-        descriptionLabel.numberOfLines = 0
-        descriptionLabel.font = UIFont.systemFont(ofSize: 16)
-        descriptionLabel.textColor = .gray
-        descriptionLabel.translatesAutoresizingMaskIntoConstraints = false
-        return descriptionLabel
-    }()
+    private lazy var descriptionLabel = InstructionLabel(text: "Please enter a new name for the selected subcategory.")
 
     private lazy var nameTextField: UITextField = {
         let nameTextField = UITextField()
@@ -36,20 +20,22 @@ class EditSubcategorySheetViewController: UIViewController, UITextFieldDelegate 
         return nameTextField
     }()
 
+    private lazy var submitButton = ActionButton(backgroundColor: UIColor(red: 0.8, green: 0.82, blue: 0.89, alpha: 1.0), title: "Submit", action: submitHandler)
+
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
 
-        setupTitleLabel()
-        setupDescriptionLabel()
-        setupTextField()
-        setupSubmitButton()
+        configureTitleLabel()
+        configureDescriptionLabel()
+        configureTextField()
+        configureSubmitButton()
 
         nameTextField.delegate = self
         nameTextField.addTarget(self, action: #selector(textFieldDidChange), for: .editingChanged)
     }
 
-    private func setupTitleLabel() {
+    private func configureTitleLabel() {
         view.addSubview(titleLabel)
 
         NSLayoutConstraint.activate([
@@ -58,7 +44,7 @@ class EditSubcategorySheetViewController: UIViewController, UITextFieldDelegate 
         ])
     }
 
-    private func setupDescriptionLabel() {
+    private func configureDescriptionLabel() {
         view.addSubview(descriptionLabel)
 
         NSLayoutConstraint.activate([
@@ -69,7 +55,7 @@ class EditSubcategorySheetViewController: UIViewController, UITextFieldDelegate 
         ])
     }
 
-    private func setupTextField() {
+    private func configureTextField() {
         view.addSubview(nameTextField)
 
         NSLayoutConstraint.activate([
@@ -81,7 +67,7 @@ class EditSubcategorySheetViewController: UIViewController, UITextFieldDelegate 
         ])
     }
 
-    private func setupSubmitButton() {
+    private func configureSubmitButton() {
         view.addSubview(submitButton)
 
         NSLayoutConstraint.activate([
