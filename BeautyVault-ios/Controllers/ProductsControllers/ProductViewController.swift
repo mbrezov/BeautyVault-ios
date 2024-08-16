@@ -113,22 +113,22 @@ class ProductViewController: UIViewController {
     }
 
     private func configureScrollView() {
-            view.addSubview(scrollView)
-            scrollView.addSubview(contentView)
+        view.addSubview(scrollView)
+        scrollView.addSubview(contentView)
 
-            NSLayoutConstraint.activate([
-                scrollView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
-                scrollView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-                scrollView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-                scrollView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+        NSLayoutConstraint.activate([
+            scrollView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            scrollView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            scrollView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            scrollView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
 
-                contentView.topAnchor.constraint(equalTo: scrollView.topAnchor),
-                contentView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor),
-                contentView.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor),
-                contentView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor),
-                contentView.widthAnchor.constraint(equalTo: scrollView.widthAnchor)
-            ])
-        }
+            contentView.topAnchor.constraint(equalTo: scrollView.topAnchor),
+            contentView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor),
+            contentView.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor),
+            contentView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor),
+            contentView.widthAnchor.constraint(equalTo: scrollView.widthAnchor)
+        ])
+    }
 
     private func configureContentView() {
         contentView.addSubview(accountProfileImg)
@@ -152,7 +152,8 @@ class ProductViewController: UIViewController {
 
         NSLayoutConstraint.activate([
             titleLabel.topAnchor.constraint(equalTo: priceLabel.bottomAnchor, constant: Constants.labelSpacing),
-            titleLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: Constants.padding)
+            titleLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: Constants.padding),
+            titleLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -Constants.padding)
         ])
 
         NSLayoutConstraint.activate([
@@ -168,10 +169,10 @@ class ProductViewController: UIViewController {
         buyContainer.translatesAutoresizingMaskIntoConstraints = false
 
         view.addSubview(buyContainer)
-        
+
         buyContainer.addSubview(buyTitleLabel)
         buyContainer.addSubview(buyLabel)
-        
+
         NSLayoutConstraint.activate([
             buyTitleLabel.leadingAnchor.constraint(equalTo: buyContainer.leadingAnchor),
             buyTitleLabel.centerYAnchor.constraint(equalTo: buyContainer.centerYAnchor),
@@ -181,7 +182,6 @@ class ProductViewController: UIViewController {
             buyLabel.centerYAnchor.constraint(equalTo: buyTitleLabel.centerYAnchor),
             buyLabel.leadingAnchor.constraint(equalTo: buyTitleLabel.trailingAnchor, constant: Constants.labelSpacing)
         ])
-
 
         NSLayoutConstraint.activate([
             buyContainer.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: Constants.sectionSpacing),
