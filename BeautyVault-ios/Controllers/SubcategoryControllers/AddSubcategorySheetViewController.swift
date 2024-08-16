@@ -23,7 +23,7 @@ class AddSubcategorySheetViewController: UIViewController, UITextFieldDelegate {
     private lazy var submitButton = BottomActionButton(backgroundColor: UIColor(red: 0.8, green: 0.82, blue: 0.89, alpha: 1.0), title: "Submit", action: submitHandler)
 
     enum Constants {
-        static let topPadding = CGFloat(10)
+        static let topPadding: CGFloat = 10
     }
 
     override func viewDidLoad() {

@@ -38,7 +38,7 @@ class CategoriesViewController: UIViewController {
         view.addSubview(titleLabel)
 
         NSLayoutConstraint.activate([
-            titleLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            titleLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: -20),
             titleLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
         ])
     }

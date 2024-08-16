@@ -36,7 +36,7 @@ class AddProductSheetViewController1: UIViewController, UITextFieldDelegate {
     }()
     
     enum Constants {
-        static let topPadding = CGFloat(10)
+        static let topPadding: CGFloat = 10
     }
 
     override func viewDidLoad() {

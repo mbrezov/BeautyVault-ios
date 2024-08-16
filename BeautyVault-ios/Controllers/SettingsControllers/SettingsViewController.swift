@@ -38,7 +38,7 @@ class SettingsViewController: UIViewController {
         return emailLabel
     }()
 
-    private lazy var logoutButton = ActionButton(backgroundColor: .systemIndigo, title: "Logout", action: logoutHandler)
+    private lazy var logoutButton = BottomActionButton(backgroundColor: .systemIndigo, title: "Logout", action: logoutHandler)
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -51,7 +51,7 @@ class SettingsViewController: UIViewController {
         configureTitleLabel()
         configureAccountProfileImage()
         configureEmailLabel()
-        configureLogoutButton()
+        logoutButton.configure(in: view)
     }
 
     override func viewDidLayoutSubviews() {
@@ -102,17 +102,6 @@ class SettingsViewController: UIViewController {
         NSLayoutConstraint.activate([
             emailContainer.topAnchor.constraint(equalTo: accountProfileImage.bottomAnchor, constant: 30),
             emailContainer.centerXAnchor.constraint(equalTo: view.centerXAnchor)
-        ])
-    }
-    
-    private func configureLogoutButton() {
-        view.addSubview(logoutButton)
-
-        NSLayoutConstraint.activate([
-            logoutButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            logoutButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -20),
-            logoutButton.widthAnchor.constraint(equalToConstant: 250),
-            logoutButton.heightAnchor.constraint(equalToConstant: 50),
         ])
     }
 
