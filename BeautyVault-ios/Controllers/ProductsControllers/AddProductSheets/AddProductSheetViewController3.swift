@@ -8,7 +8,7 @@
 import UIKit
 
 class AddProductSheetViewController3: UIViewController {
-    private lazy var submitButton = ActionButton(backgroundColor: UIColor(red: 0.8, green: 0.82, blue: 0.89, alpha: 1.0), title: "Submit", action: submitHandler)
+    private lazy var submitButton = BottomActionButton(backgroundColor: UIColor(red: 0.8, green: 0.82, blue: 0.89, alpha: 1.0), title: "Submit", action: submitHandler)
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -19,6 +19,8 @@ class AddProductSheetViewController3: UIViewController {
         navigationItem.rightBarButtonItem = closeButton
 
         self.navigationController?.navigationBar.tintColor = .systemIndigo
+
+        submitButton.configure(in: view)
     }
 
     @objc private func dismissAddProductSheet() {
@@ -26,8 +28,6 @@ class AddProductSheetViewController3: UIViewController {
     }
 
     @objc private func submitHandler() {
-        let vc = AddProductSheetViewController2()
-
-        navigationController?.pushViewController(vc, animated: true)
+        dismissAddProductSheet()
     }
 }

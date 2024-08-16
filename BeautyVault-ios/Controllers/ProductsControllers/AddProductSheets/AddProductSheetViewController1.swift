@@ -7,8 +7,8 @@
 
 import UIKit
 
-class AddProductSheetViewController: UIViewController, UITextFieldDelegate {
-    private lazy var nextButton = ActionButton(backgroundColor: UIColor(red: 0.8, green: 0.82, blue: 0.89, alpha: 1.0), title: "Next", action: nextHandler)
+class AddProductSheetViewController1: UIViewController, UITextFieldDelegate {
+    private lazy var nextButton = BottomActionButton(backgroundColor: UIColor(red: 0.8, green: 0.82, blue: 0.89, alpha: 1.0), title: "Next", action: nextHandler)
 
     private lazy var titleLabel = SecondaryTitleLabel(text: "Add Product")
 
@@ -34,6 +34,10 @@ class AddProductSheetViewController: UIViewController, UITextFieldDelegate {
         nameTextField.translatesAutoresizingMaskIntoConstraints = false
         return nameTextField
     }()
+    
+    enum Constants {
+        static let topPadding = CGFloat(10)
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -46,7 +50,10 @@ class AddProductSheetViewController: UIViewController, UITextFieldDelegate {
         configureTextField()
         configureDescriptionLabel()
         configureDescriptionTextField()
-        configureNextButton()
+        nextButton.configure(in: view)
+
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
+        view.addGestureRecognizer(tapGesture)
 
         nameTextField.delegate = self
         nameTextField.addTarget(self, action: #selector(textFieldDidChange), for: .editingChanged)
@@ -77,7 +84,7 @@ class AddProductSheetViewController: UIViewController, UITextFieldDelegate {
 
         NSLayoutConstraint.activate([
             nameTextField.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            nameTextField.topAnchor.constraint(equalTo: nameLabel.bottomAnchor, constant: 20),
+            nameTextField.topAnchor.constraint(equalTo: nameLabel.bottomAnchor, constant: Constants.topPadding),
             nameTextField.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
             nameTextField.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
             nameTextField.heightAnchor.constraint(equalToConstant: 44)
@@ -100,27 +107,21 @@ class AddProductSheetViewController: UIViewController, UITextFieldDelegate {
 
         NSLayoutConstraint.activate([
             descriptionTextView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            descriptionTextView.topAnchor.constraint(equalTo: descriptionLabel.bottomAnchor, constant: 20),
+            descriptionTextView.topAnchor.constraint(equalTo: descriptionLabel.bottomAnchor, constant: Constants.topPadding),
             descriptionTextView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
             descriptionTextView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
-            descriptionTextView.heightAnchor.constraint(equalToConstant: 44)
+            descriptionTextView.heightAnchor.constraint(equalToConstant: 60)
         ])
     }
 
-    private func configureNextButton() {
-        view.addSubview(nextButton)
-
-        NSLayoutConstraint.activate([
-            nextButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            nextButton.topAnchor.constraint(equalTo: descriptionTextView.bottomAnchor, constant: 30),
-            nextButton.widthAnchor.constraint(equalToConstant: 250),
-            nextButton.heightAnchor.constraint(equalToConstant: 50)
-        ])
+    @objc private func dismissKeyboard() {
+        view.endEditing(true)
     }
 
     @objc private func nextHandler() {
-        let vc = AddProductSheetViewController2()
+        dismissKeyboard()
 
+        let vc = AddProductSheetViewController2()
         navigationController?.pushViewController(vc, animated: true)
     }
 

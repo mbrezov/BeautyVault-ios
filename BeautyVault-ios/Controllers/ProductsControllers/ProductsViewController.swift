@@ -85,7 +85,7 @@ class ProductsViewController: UIViewController {
     }
 
     @objc private func addProduct() {
-        let vc = AddProductSheetViewController()
+        let vc = AddProductSheetViewController1()
 
         let navController = UINavigationController(rootViewController: vc)
 

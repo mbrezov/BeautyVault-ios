@@ -27,6 +27,7 @@
 		721F02F62C64F57D00A98803 /* SignupUserRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 721F02F22C64F57D00A98803 /* SignupUserRequest.swift */; };
 		72309C002C64F49900880153 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72309BFF2C64F49900880153 /* AppDelegate.swift */; };
 		72309C092C64F49A00880153 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 72309C082C64F49A00880153 /* Assets.xcassets */; };
+		724AA9FB2C6F3D9000974B3B /* BottomActionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 724AA9FA2C6F3D9000974B3B /* BottomActionButton.swift */; };
 		724B612B2C64F648000B4E0B /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 724B61252C64F648000B4E0B /* AuthService.swift */; };
 		724B612C2C64F648000B4E0B /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 724B61262C64F648000B4E0B /* Constants.swift */; };
 		724B612D2C64F648000B4E0B /* Endpoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 724B61272C64F648000B4E0B /* Endpoints.swift */; };
@@ -35,7 +36,7 @@
 		7266FC402C6513BF005C6BDD /* ProductsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7266FC3F2C6513BF005C6BDD /* ProductsViewController.swift */; };
 		726A25732C65F07D0002E858 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 726A25722C65F07D0002E858 /* Kingfisher */; };
 		726A25762C661D500002E858 /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = 726A25752C661D500002E858 /* Product.swift */; };
-		7289E0252C6CAF31001D3899 /* AddProductSheetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7289E0242C6CAF31001D3899 /* AddProductSheetViewController.swift */; };
+		7289E0252C6CAF31001D3899 /* AddProductSheetViewController1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7289E0242C6CAF31001D3899 /* AddProductSheetViewController1.swift */; };
 		72B7D8582C6902FE00E9F938 /* EditSubcategorySheetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72B7D8572C6902FE00E9F938 /* EditSubcategorySheetViewController.swift */; };
 		72C2BBC02C677AAF00D9F53E /* RightBarButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72C2BBBF2C677AAF00D9F53E /* RightBarButton.swift */; };
 		72C2BBC62C67835A00D9F53E /* WishlistViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72C2BBC52C67835A00D9F53E /* WishlistViewController.swift */; };
@@ -65,6 +66,7 @@
 		72309BFF2C64F49900880153 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		72309C082C64F49A00880153 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		72309C0D2C64F49A00880153 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		724AA9FA2C6F3D9000974B3B /* BottomActionButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomActionButton.swift; sourceTree = "<group>"; };
 		724B61252C64F648000B4E0B /* AuthService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
 		724B61262C64F648000B4E0B /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		724B61272C64F648000B4E0B /* Endpoints.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Endpoints.swift; sourceTree = "<group>"; };
@@ -72,7 +74,7 @@
 		7266FC3C2C650D5C005C6BDD /* ProductViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductViewController.swift; sourceTree = "<group>"; };
 		7266FC3F2C6513BF005C6BDD /* ProductsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductsViewController.swift; sourceTree = "<group>"; };
 		726A25752C661D500002E858 /* Product.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Product.swift; sourceTree = "<group>"; };
-		7289E0242C6CAF31001D3899 /* AddProductSheetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddProductSheetViewController.swift; sourceTree = "<group>"; };
+		7289E0242C6CAF31001D3899 /* AddProductSheetViewController1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddProductSheetViewController1.swift; sourceTree = "<group>"; };
 		72B7D8572C6902FE00E9F938 /* EditSubcategorySheetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditSubcategorySheetViewController.swift; sourceTree = "<group>"; };
 		72C2BBBF2C677AAF00D9F53E /* RightBarButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RightBarButton.swift; sourceTree = "<group>"; };
 		72C2BBC52C67835A00D9F53E /* WishlistViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WishlistViewController.swift; sourceTree = "<group>"; };
@@ -94,7 +96,7 @@
 		72120C762C6CF1F200EB46EE /* AddProductSheets */ = {
 			isa = PBXGroup;
 			children = (
-				7289E0242C6CAF31001D3899 /* AddProductSheetViewController.swift */,
+				7289E0242C6CAF31001D3899 /* AddProductSheetViewController1.swift */,
 				72120C772C6CF4A300EB46EE /* AddProductSheetViewController2.swift */,
 				72120C792C6CF9E300EB46EE /* AddProductSheetViewController3.swift */,
 			);
@@ -238,6 +240,7 @@
 			children = (
 				721F02E92C64F56700A98803 /* ActionButton.swift */,
 				72C2BBBF2C677AAF00D9F53E /* RightBarButton.swift */,
+				724AA9FA2C6F3D9000974B3B /* BottomActionButton.swift */,
 			);
 			path = Buttons;
 			sourceTree = "<group>";
@@ -344,6 +347,7 @@
 			files = (
 				72120C7A2C6CF9E300EB46EE /* AddProductSheetViewController3.swift in Sources */,
 				721F02DF2C64F55200A98803 /* LoginViewController.swift in Sources */,
+				724AA9FB2C6F3D9000974B3B /* BottomActionButton.swift in Sources */,
 				72120C782C6CF4A300EB46EE /* AddProductSheetViewController2.swift in Sources */,
 				72120C812C6D08FF00EB46EE /* SecondaryTitleLabel.swift in Sources */,
 				721F02E22C64F55200A98803 /* CategoriesCollectionViewCell.swift in Sources */,
@@ -356,7 +360,7 @@
 				724B612B2C64F648000B4E0B /* AuthService.swift in Sources */,
 				721F02E62C64F55200A98803 /* SettingsViewController.swift in Sources */,
 				721F02E02C64F55200A98803 /* SignupViewController.swift in Sources */,
-				7289E0252C6CAF31001D3899 /* AddProductSheetViewController.swift in Sources */,
+				7289E0252C6CAF31001D3899 /* AddProductSheetViewController1.swift in Sources */,
 				7266FC402C6513BF005C6BDD /* ProductsViewController.swift in Sources */,
 				724B612D2C64F648000B4E0B /* Endpoints.swift in Sources */,
 				72309C002C64F49900880153 /* AppDelegate.swift in Sources */,

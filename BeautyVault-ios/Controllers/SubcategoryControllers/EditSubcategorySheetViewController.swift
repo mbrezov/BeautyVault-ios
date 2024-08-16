@@ -20,7 +20,11 @@ class EditSubcategorySheetViewController: UIViewController, UITextFieldDelegate 
         return nameTextField
     }()
 
-    private lazy var submitButton = ActionButton(backgroundColor: UIColor(red: 0.8, green: 0.82, blue: 0.89, alpha: 1.0), title: "Submit", action: submitHandler)
+    private lazy var submitButton = BottomActionButton(backgroundColor: UIColor(red: 0.8, green: 0.82, blue: 0.89, alpha: 1.0), title: "Submit", action: submitHandler)
+
+    enum Constants {
+        static let topPadding = CGFloat(10)
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,10 +33,13 @@ class EditSubcategorySheetViewController: UIViewController, UITextFieldDelegate 
         configureTitleLabel()
         configureDescriptionLabel()
         configureTextField()
-        configureSubmitButton()
+        submitButton.configure(in: view)
 
         nameTextField.delegate = self
         nameTextField.addTarget(self, action: #selector(textFieldDidChange), for: .editingChanged)
+
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
+        view.addGestureRecognizer(tapGesture)
     }
 
     private func configureTitleLabel() {
@@ -60,22 +67,15 @@ class EditSubcategorySheetViewController: UIViewController, UITextFieldDelegate 
 
         NSLayoutConstraint.activate([
             nameTextField.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            nameTextField.topAnchor.constraint(equalTo: descriptionLabel.bottomAnchor, constant: 20),
+            nameTextField.topAnchor.constraint(equalTo: descriptionLabel.bottomAnchor, constant: Constants.topPadding),
             nameTextField.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
             nameTextField.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
             nameTextField.heightAnchor.constraint(equalToConstant: 44)
         ])
     }
 
-    private func configureSubmitButton() {
-        view.addSubview(submitButton)
-
-        NSLayoutConstraint.activate([
-            submitButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            submitButton.topAnchor.constraint(equalTo: nameTextField.bottomAnchor, constant: 40),
-            submitButton.widthAnchor.constraint(equalToConstant: 250),
-            submitButton.heightAnchor.constraint(equalToConstant: 50)
-        ])
+    @objc private func dismissKeyboard() {
+        view.endEditing(true)
     }
 
     @objc private func submitHandler() {

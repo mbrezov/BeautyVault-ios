@@ -8,7 +8,7 @@
 import UIKit
 
 class AddProductSheetViewController2: UIViewController {
-    private lazy var nextButton = ActionButton(backgroundColor: UIColor(red: 0.8, green: 0.82, blue: 0.89, alpha: 1.0), title: "Next", action: nextHandler)
+    private lazy var nextButton = BottomActionButton(backgroundColor: UIColor(red: 0.8, green: 0.82, blue: 0.89, alpha: 1.0), title: "Next", action: nextHandler)
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,7 +21,14 @@ class AddProductSheetViewController2: UIViewController {
         self.navigationController?.navigationBar.tintColor = .systemIndigo
         navigationItem.backButtonTitle = ""
 
-        configureNextButton()
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
+        view.addGestureRecognizer(tapGesture)
+
+        nextButton.configure(in: view)
+    }
+
+    @objc private func dismissKeyboard() {
+        view.endEditing(true)
     }
 
     @objc private func dismissAddProductSheet() {
@@ -29,19 +36,9 @@ class AddProductSheetViewController2: UIViewController {
     }
 
     @objc private func nextHandler() {
+        dismissKeyboard()
+
         let vc = AddProductSheetViewController3()
-
         navigationController?.pushViewController(vc, animated: true)
-    }
-
-    private func configureNextButton() {
-        view.addSubview(nextButton)
-
-        NSLayoutConstraint.activate([
-            nextButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            nextButton.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: -20),
-            nextButton.widthAnchor.constraint(equalToConstant: 250),
-            nextButton.heightAnchor.constraint(equalToConstant: 50)
-        ])
     }
 }

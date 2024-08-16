@@ -27,6 +27,7 @@ class InstructionLabel: UILabel {
     private func configure() {
         font = UIFont.systemFont(ofSize: 16)
         textColor = .gray
+        numberOfLines = 0
         translatesAutoresizingMaskIntoConstraints = false
     }
 }

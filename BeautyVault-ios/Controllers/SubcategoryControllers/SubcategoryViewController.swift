@@ -67,24 +67,7 @@ class SubcategoryViewController: UIViewController {
     }
 
     private func handleEditAction(at indexPath: IndexPath) {
-        let vc = EditSubcategorySheetViewController()
-
-        let navController = UINavigationController(rootViewController: vc)
-
-        if let sheet = navController.sheetPresentationController {
-            sheet.detents = [.custom { _ in
-                let screenHeight = UIScreen.main.bounds.height
-                return screenHeight * 0.3
-            }]
-        }
-
-        let closeButton = UIBarButtonItem(title: "Close", style: .done, target: self, action: #selector(dismissAddSubcategorySheet))
-
-        closeButton.tintColor = .systemIndigo
-
-        vc.navigationItem.rightBarButtonItem = closeButton
-
-        present(navController, animated: true, completion: nil)
+        presentSheet(EditSubcategorySheetViewController())
     }
 
     private let cellRegistration = UICollectionView.CellRegistration<UICollectionViewListCell, String> { cell, indexPath, item in
@@ -124,8 +107,14 @@ class SubcategoryViewController: UIViewController {
     }
 
     @objc private func addSubcategory() {
-        let vc = AddSubcategorySheetViewController()
+        presentSheet(AddSubcategorySheetViewController())
+    }
 
+    @objc private func dismissAddSubcategorySheet() {
+        dismiss(animated: true, completion: nil)
+    }
+
+    private func presentSheet(_ vc: UIViewController) {
         let navController = UINavigationController(rootViewController: vc)
 
         if let sheet = navController.sheetPresentationController {
@@ -142,10 +131,6 @@ class SubcategoryViewController: UIViewController {
         vc.navigationItem.rightBarButtonItem = closeButton
 
         present(navController, animated: true, completion: nil)
-    }
-
-    @objc private func dismissAddSubcategorySheet() {
-        dismiss(animated: true, completion: nil)
     }
 
     private func configureTableView() {
