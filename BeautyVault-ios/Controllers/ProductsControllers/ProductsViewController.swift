@@ -78,9 +78,9 @@ class ProductsViewController: UIViewController {
 
         NSLayoutConstraint.activate([
             collectionView.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 20),
-            collectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: 0),
-            collectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 0),
-            collectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 0),
+            collectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+            collectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            collectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
         ])
     }
 
@@ -90,10 +90,7 @@ class ProductsViewController: UIViewController {
         let navController = UINavigationController(rootViewController: vc)
 
         if let sheet = navController.sheetPresentationController {
-            sheet.detents = [.custom { _ in
-                let screenHeight = UIScreen.main.bounds.height
-                return screenHeight * 0.4
-            }]
+            sheet.detents = [.medium()]
         }
 
         let closeButton = UIBarButtonItem(title: "Close", style: .done, target: self, action: #selector(dismissAddProductSheet))

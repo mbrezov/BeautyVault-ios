@@ -7,8 +7,8 @@
 
 import UIKit
 
-class AddProductSheetViewController1: UIViewController, UITextFieldDelegate {
-    private lazy var nextButton = BottomActionButton(backgroundColor: UIColor(red: 0.8, green: 0.82, blue: 0.89, alpha: 1.0), title: "Next", action: nextHandler)
+class AddProductSheetViewController1: UIViewController, UITextFieldDelegate, UITextViewDelegate {
+    private lazy var nextButton = BottomActionButton(backgroundColor: UIColor(red: 0.85, green: 0.87, blue: 1, alpha: 1), title: "Next", action: nextHandler)
 
     private lazy var titleLabel = SecondaryTitleLabel(text: "Add Product")
 
@@ -36,27 +36,31 @@ class AddProductSheetViewController1: UIViewController, UITextFieldDelegate {
     }()
     
     enum Constants {
-        static let topPadding: CGFloat = 10
+        static let sectionSpacing: CGFloat = 20
+        static let labelSpacing: CGFloat = 10
+        static let padding: CGFloat = 20
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
-
+        
         navigationItem.backButtonTitle = ""
-
+        
         configureTitleLabel()
         configureNameLabel()
         configureTextField()
         configureDescriptionLabel()
         configureDescriptionTextField()
         nextButton.configure(in: view)
-
+        
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
         view.addGestureRecognizer(tapGesture)
 
+        descriptionTextView.delegate = self
         nameTextField.delegate = self
-        nameTextField.addTarget(self, action: #selector(textFieldDidChange), for: .editingChanged)
+
+        nameTextField.addTarget(self, action: #selector(textFieldsDidChange), for: .editingChanged)
     }
 
     private func configureTitleLabel() {
@@ -64,7 +68,7 @@ class AddProductSheetViewController1: UIViewController, UITextFieldDelegate {
 
         NSLayoutConstraint.activate([
             titleLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            titleLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: -20),
+            titleLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 16),
         ])
     }
 
@@ -72,10 +76,8 @@ class AddProductSheetViewController1: UIViewController, UITextFieldDelegate {
         view.addSubview(nameLabel)
 
         NSLayoutConstraint.activate([
-            nameLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            nameLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 10),
-            nameLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
-            nameLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20)
+            nameLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: Constants.sectionSpacing),
+            nameLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: Constants.padding),
         ])
     }
 
@@ -83,11 +85,10 @@ class AddProductSheetViewController1: UIViewController, UITextFieldDelegate {
         view.addSubview(nameTextField)
 
         NSLayoutConstraint.activate([
-            nameTextField.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            nameTextField.topAnchor.constraint(equalTo: nameLabel.bottomAnchor, constant: Constants.topPadding),
-            nameTextField.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
-            nameTextField.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
-            nameTextField.heightAnchor.constraint(equalToConstant: 44)
+            nameTextField.topAnchor.constraint(equalTo: nameLabel.bottomAnchor, constant: Constants.labelSpacing),
+            nameTextField.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: Constants.padding),
+            nameTextField.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -Constants.padding),
+            nameTextField.heightAnchor.constraint(equalToConstant: 45)
         ])
     }
     
@@ -95,10 +96,8 @@ class AddProductSheetViewController1: UIViewController, UITextFieldDelegate {
         view.addSubview(descriptionLabel)
 
         NSLayoutConstraint.activate([
-            descriptionLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            descriptionLabel.topAnchor.constraint(equalTo: nameTextField.bottomAnchor, constant: 20),
-            descriptionLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
-            descriptionLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20)
+            descriptionLabel.topAnchor.constraint(equalTo: nameTextField.bottomAnchor, constant: Constants.sectionSpacing),
+            descriptionLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: Constants.padding),
         ])
     }
 
@@ -106,11 +105,10 @@ class AddProductSheetViewController1: UIViewController, UITextFieldDelegate {
         view.addSubview(descriptionTextView)
 
         NSLayoutConstraint.activate([
-            descriptionTextView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            descriptionTextView.topAnchor.constraint(equalTo: descriptionLabel.bottomAnchor, constant: Constants.topPadding),
-            descriptionTextView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
-            descriptionTextView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
-            descriptionTextView.heightAnchor.constraint(equalToConstant: 60)
+            descriptionTextView.topAnchor.constraint(equalTo: descriptionLabel.bottomAnchor, constant: Constants.labelSpacing),
+            descriptionTextView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: Constants.padding),
+            descriptionTextView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -Constants.padding),
+            descriptionTextView.heightAnchor.constraint(equalToConstant: 160)
         ])
     }
 
@@ -119,16 +117,31 @@ class AddProductSheetViewController1: UIViewController, UITextFieldDelegate {
     }
 
     @objc private func nextHandler() {
+        guard let title = nameTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines), !title.isEmpty else {
+            return
+        }
+        guard let description = descriptionTextView.text?.trimmingCharacters(in: .whitespacesAndNewlines), !description.isEmpty else {
+            return
+        }
+
         dismissKeyboard()
 
         let vc = AddProductSheetViewController2()
         navigationController?.pushViewController(vc, animated: true)
     }
 
-    @objc private func textFieldDidChange() {
-        let isTextFieldEmpty = nameTextField.text?.isEmpty ?? true
+    @objc private func textFieldsDidChange() {
+        let isTitleEmpty = nameTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty ?? true
+        let isDescriptionEmpty = descriptionTextView.text?.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty ?? true
 
-        nextButton.backgroundColor = isTextFieldEmpty ? UIColor(red: 0.85, green: 0.87, blue: 1, alpha: 1) : .systemIndigo
-        nextButton.isEnabled = !isTextFieldEmpty
+        if isTitleEmpty || isDescriptionEmpty {
+            nextButton.backgroundColor = UIColor(red: 0.85, green: 0.87, blue: 1, alpha: 1)
+        } else {
+            nextButton.backgroundColor = .systemIndigo
+        }
+    }
+
+    func textViewDidChange(_ textView: UITextView) {
+        textFieldsDidChange()
     }
 }

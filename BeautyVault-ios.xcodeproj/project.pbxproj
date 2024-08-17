@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		72120C782C6CF4A300EB46EE /* AddProductSheetViewController2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72120C772C6CF4A300EB46EE /* AddProductSheetViewController2.swift */; };
-		72120C7A2C6CF9E300EB46EE /* AddProductSheetViewController3.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72120C792C6CF9E300EB46EE /* AddProductSheetViewController3.swift */; };
 		72120C7D2C6D03DC00EB46EE /* InstructionLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72120C7C2C6D03DC00EB46EE /* InstructionLabel.swift */; };
 		72120C7F2C6D06C300EB46EE /* MainTitleLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72120C7E2C6D06C300EB46EE /* MainTitleLabel.swift */; };
 		72120C812C6D08FF00EB46EE /* SecondaryTitleLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72120C802C6D08FF00EB46EE /* SecondaryTitleLabel.swift */; };
@@ -45,7 +44,6 @@
 
 /* Begin PBXFileReference section */
 		72120C772C6CF4A300EB46EE /* AddProductSheetViewController2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddProductSheetViewController2.swift; sourceTree = "<group>"; };
-		72120C792C6CF9E300EB46EE /* AddProductSheetViewController3.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddProductSheetViewController3.swift; sourceTree = "<group>"; };
 		72120C7C2C6D03DC00EB46EE /* InstructionLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstructionLabel.swift; sourceTree = "<group>"; };
 		72120C7E2C6D06C300EB46EE /* MainTitleLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTitleLabel.swift; sourceTree = "<group>"; };
 		72120C802C6D08FF00EB46EE /* SecondaryTitleLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondaryTitleLabel.swift; sourceTree = "<group>"; };
@@ -98,7 +96,6 @@
 			children = (
 				7289E0242C6CAF31001D3899 /* AddProductSheetViewController1.swift */,
 				72120C772C6CF4A300EB46EE /* AddProductSheetViewController2.swift */,
-				72120C792C6CF9E300EB46EE /* AddProductSheetViewController3.swift */,
 			);
 			path = AddProductSheets;
 			sourceTree = "<group>";
@@ -345,7 +342,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				72120C7A2C6CF9E300EB46EE /* AddProductSheetViewController3.swift in Sources */,
 				721F02DF2C64F55200A98803 /* LoginViewController.swift in Sources */,
 				724AA9FB2C6F3D9000974B3B /* BottomActionButton.swift in Sources */,
 				72120C782C6CF4A300EB46EE /* AddProductSheetViewController2.swift in Sources */,
